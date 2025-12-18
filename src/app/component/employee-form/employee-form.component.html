@@ -1,0 +1,71 @@
+<div class="p-8 mt=4">
+    <div class="shadow p-6">
+        @if(!this.employeeID){
+            <h4>Create Employee</h4>
+        }
+        @else {
+            <h4>Edit Employee</h4>
+        }
+        <form [formGroup]="employeeForm" (ngSubmit)="Save()">
+    <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput placeholder="name" formControlName="name">
+            @if (this.employeeForm.controls.name.hasError('required')) {
+                <mat-error>Name is <strong>required</strong></mat-error>
+              }
+          </mat-form-field>
+    </div>
+    <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+            @if (this.employeeForm.controls.email.hasError('email') && !this.employeeForm.controls.email.hasError('required')) {
+                <mat-error>Please enter a valid email address</mat-error>
+              }
+              @if (this.employeeForm.controls.email.hasError('required')) {
+                <mat-error>Email is <strong>required</strong></mat-error>
+              }
+          </mat-form-field>
+    </div>
+    <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+            <mat-label>Age</mat-label>
+            <input type="number" matInput placeholder="age" formControlName="age">
+            @if (this.employeeForm.controls.age.hasError('required')) {
+                <mat-error>Age is <strong>required</strong></mat-error>
+              }
+          </mat-form-field>
+    </div>
+    <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+            <mat-label>Phone</mat-label>
+            <input type="text" matInput placeholder="phone" formControlName="phone">
+            @if (this.employeeForm.controls.phone.hasError('required')) {
+                <mat-error>Phone is <strong>required</strong></mat-error>
+              }
+          </mat-form-field>
+    </div>
+    <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+            <mat-label>Salary</mat-label>
+            <input type="number" matInput placeholder="salary" formControlName="salary">
+            @if (this.employeeForm.controls.salary.hasError('required')) {
+                <mat-error>Salary is <strong>required</strong></mat-error>
+              }
+          </mat-form-field>
+    </div>
+    
+    <div class="flex justify-center p-6">
+        @if(!this.employeeID){
+            <button mat-flat-button color="primary" [disabled]="!employeeForm.valid">Save</button>
+        }
+        @else {
+            <button mat-flat-button color="primary" [disabled]="!employeeForm.valid">Update</button>
+        }
+            
+    
+    </div>
+        </form>
+    </div>
+</div>
